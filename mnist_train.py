@@ -9,15 +9,11 @@ from keras.models import Sequential
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from keras.datasets import mnist
 
 print("Loading CSV Data...")
 
-train_df = pd.read_csv("raw_data/mnist_test.csv")
-
-print("Preprocessing data...")
-
-y_train = train_df.iloc[:, 0].values # Just taking the values except column names
-x_train = train_df.iloc[:, 1:].values
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
 
 # Need to normalize the data since they are not ideal for neural network
 x_train = x_train/255.0

@@ -7,6 +7,7 @@ from tensorflow import keras
 from keras import layers
 from keras.models import Sequential
 import numpy as np
+from keras.datasets import mnist
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -21,14 +22,11 @@ except:
 
 print("Loading test data...")
 try:
-    test_df = pd.read_csv('raw_data/mnist_test.csv')
+    (x_train, y_train), (x_test, y_test) = mnist.load_data()
 except FileNotFoundError:
     print("Error: Could not find 'raw_data/mnist_test.csv'.")
     exit()
 
-#Preprocessing
-x_test = test_df.iloc[:,1:].values
-y_test = test_df.iloc[:,0].values
 
 x_test = x_test/255.0
 

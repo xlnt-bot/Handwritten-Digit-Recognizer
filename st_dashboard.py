@@ -78,9 +78,8 @@ def center_and_resize(image):
 with col2:
     st.subheader("Prediction")
 
-    if canvas_op.image_data is not None:
-        img_data = canvas_op.image_data
-        if np.sum(img_data[: ,: , 3] > 0):
+    if canvas_op.json_data is not None and len(canvas_op.json_data["objects"]) > 0:
+            img_data = canvas_op.image_data
 
             grey_img = cv2.cvtColor(img_data.astype('uint8'),cv2.COLOR_RGBA2GRAY)
 
